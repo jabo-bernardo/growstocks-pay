@@ -1,0 +1,18 @@
+{
+  "name": "growstocks-pay",
+  "version": "1.1.0",
+  "description": "A simple API wrapper for GrowStocks Pay",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "node postinstall.js"
+  },
+  "keywords": ["gs-pay", "growstocks", "pay", "growstocks pay"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "print-message": "^3.0.1",
+    "request": "^2.88.2"
+  }
+}
