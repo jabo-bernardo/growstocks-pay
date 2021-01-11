@@ -8,9 +8,10 @@ class GrowStocksPay {
         this.secret = CLIENT_SECRET;
     }
 
-    async createTransaction(user, amount) {
+    async createTransaction(user, amount, notes="") {
         if(!this.secret) throw new Error(`Invalid Secret!`);
-        let response = await request(`${config.baseURL}/transaction/create`, { secret: this.secret, user: user, amount: amount });
+        if(notes.length > 50) notes = notes.slice(0, 50);
+        let response = await request(`${config.baseURL}/transaction/create`, { secret: this.secret, user: user, amount: amount, notes });
         if(!response.success)
             throw new Error(response.reason);
         return response.transaction;
