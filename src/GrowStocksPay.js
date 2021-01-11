@@ -29,9 +29,10 @@ class GrowStocksPay {
         return response;
     }
 
-    async sendWorldLocks(user, amount) {
-        if(!this.secret) throw new Error(`Invalid Secret!`);        
-        let response = await request(`${config.baseURL}/send`, { secret: this.secret, party: user, amount: amount });
+    async sendWorldLocks(user, amount, notes="") {
+        if(!this.secret) throw new Error(`Invalid Secret!`);  
+        if(notes.length > 50) notes = notes.slice(0, 50);      
+        let response = await request(`${config.baseURL}/send`, { secret: this.secret, party: user, amount: amount, notes });
         if(!response.success)
             throw new Error(response.reason);
         return { text: response.reason, balanceLeft: response.balance};
